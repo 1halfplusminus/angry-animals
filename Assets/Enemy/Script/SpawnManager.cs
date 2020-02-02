@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public List<GameObject> animals = new List<GameObject>();
+    public List<GameObject> spawnItems = new List<GameObject>();
     public Vector3 spawnRange = new Vector3(20, 0, 0);
     public Vector3 spawnPos = new Vector3(0, 0, 20);
 
     public float spawnInterval = 1.5f;
     public float startDelay = 2f;
 
-    public List<GameObject> animalInstances = new List<GameObject>();
+    List<GameObject> animalInstances = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating(nameof(SpawnRandomAnimal), startDelay, spawnInterval);
+        InvokeRepeating(nameof(SpawnRandom), startDelay, spawnInterval);
     }
 
-    void SpawnRandomAnimal()
+    void SpawnRandom()
     {
         if (enabled)
         {
-            int animalIndex = Random.Range(0, animals.Count);
+            int animalIndex = Random.Range(0, spawnItems.Count);
             Vector3 instancePos = new Vector3(Random.Range(-spawnRange.x, spawnRange.x), spawnRange.y, spawnRange.z) + spawnPos;
-            var instance = Instantiate(animals[animalIndex], instancePos, animals[animalIndex].transform.rotation);
+            var instance = Instantiate(spawnItems[animalIndex], instancePos, spawnItems[animalIndex].transform.rotation);
             animalInstances.Add(instance);
         }
     }

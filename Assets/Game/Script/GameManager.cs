@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public HumanoidController playerController;
+    public MonoBehaviour playerController;
     public SpawnManager spawnManager;
     bool gameOver = false;
     // Start is called before the first frame update
